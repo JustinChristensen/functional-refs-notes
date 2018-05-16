@@ -1,15 +1,14 @@
 PROGRAM := frefs
-BINDIR := bin
 
 all: $(PROGRAM)
 
-$(BINDIR):
-	mkdir -p $(BINDIR)
+run: $(PROGRAM)
+	@./$(PROGRAM)
 
-$(BINDIR)/$(PROGRAM): Main.hs | $(BINDIR)
+$(PROGRAM): Main.hs
 	ghc -o $@ $^
 
 clean:
-	rm -r $(BINDIR)
+	rm -rf $(PROGRAM) *.hi *.o
 
-.PHONY: all clean
+.PHONY: all clean run
