@@ -14,7 +14,10 @@ $(BINDIR):
 $(PROGRAM): $(PROGRAM_SRCS) | $(BINDIR)
 	ghc -i$(SRCDIR) -o $@ $(GHC_FLAGS) $^
 
+ghci:
+	ghci src/FRefs.hs
+
 clean:
 	rm -rf $(BINDIR) *.hi *.o
 
-.PHONY: all clean run
+.PHONY: all clean ghci run
